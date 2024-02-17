@@ -25,12 +25,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { fund_offline_wallets, send_batch_transactions, get_all_ecpairs } from 'transaction-js';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const pairs = get_all_ecpairs();
   return (
     <View style={styles.sectionContainer}>
       <Text
